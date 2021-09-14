@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
-from decouple import config
+from decouple import config, Csv
 from dj_database_url import parse as dburl
 import os
 
