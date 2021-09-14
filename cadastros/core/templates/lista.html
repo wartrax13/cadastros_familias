@@ -17,7 +17,7 @@
     </ul>
 </div>
 <div id="main" class="product-list">
-    <h1>{% if familia %}{{ familia.nome }}{% else %}Produtos{% endif %}</h1>
+    <h1>{% if familia %}{{ familia.nome }}{% else %}Familias{% endif %}</h1>
     {% for product in products %}
     <div class="item">
         <a href="{{ familia_lista.get_absolute_url }}">
