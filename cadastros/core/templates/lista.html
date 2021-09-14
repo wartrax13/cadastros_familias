@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div id="sidebar">
+    <h3>Categorias</h3>
+    <ul>
+        <li {% if not category %}class="selected"{% endif %}>
+            <a href="{% url 'shop:product_list' %}">Todos</a>
+        </li>
+        {% for c in categories %}
+        <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+            <a href="{{ familia_lista.get_absolute_url }}">{{ c.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div id="main" class="product-list">
+    <h1>{% if familia %}{{ familia.nome }}{% else %}Produtos{% endif %}</h1>
+    {% for product in products %}
+    <div class="item">
+        <a href="{{ familia_lista.get_absolute_url }}">
+          <!--   <img src="{% if familia.image %}{{ familia.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"
+            height="200" style="max-width: 280px" border="1px"> -->
+        </a>
+        <a href="{{ familia_lista.get_absolute_url }}">{{ Familia.name }}</a>
+        <br>
+        ${{ product.price }}
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
