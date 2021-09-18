@@ -9,4 +9,5 @@ urlpatterns = [
     path('<int:pk>/', views.cadastro_detalhe, name='cadastro_detalhe'),
     path('add/', views.CriarCadastro.as_view(), name='cadastro_add'),
     path('<int:pk>/edit/', views.AtualizarCadastro.as_view(), name='editar_cadastro'),
+    path('excluir/<int:pk>/', views.DeletarCadastro.as_view(), name='deletar_cadastro'),
 ]

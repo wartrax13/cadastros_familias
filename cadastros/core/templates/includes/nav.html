@@ -29,5 +29,12 @@
           <button class="btn btn-outline-success" type="submit">Procurar</button>
         </form>
       </div>
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a href="{% url 'logout' %}" type="submit" class="btn btn-danger">Sair</a>
+      </li>
+      </ul>
+      {% endif %}
     </div>
   </nav>

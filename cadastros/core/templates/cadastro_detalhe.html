@@ -10,7 +10,12 @@
             <span class="fa fa-pencil"> Editar </span>
         </button>
     </a>
-</span>
+    <a href="{% url 'core:deletar_cadastro' object.pk %}">
+        <button type="button" class="btn btn-danger">
+            <span class="fa fa-pencil"> Deletar </span>
+        </button>
+    </a>
+    </span>
 </h1>
 <div class="col-sm-6">
     <table class="table table-user-information">
