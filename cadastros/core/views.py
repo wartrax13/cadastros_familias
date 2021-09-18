@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator
 
 from cadastros.core.forms import CadastroForm
 from django.shortcuts import render
@@ -23,10 +24,17 @@ def sobre(request):
 def cadastro_lista(request):
     template_name = 'lista.html'
     objects = Familias.objects.all()
+    # Para busca
     search = request.GET.get('search')
     if search:
         objects=objects.filter(nome__icontains=search)
-    context = {'object_list': objects}
+    # Paginacao
+    paginator = Paginator(objects, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
+    context = {'object_list': objects, 'page_obj': page_obj}
+
     return render(request, template_name, context)
 
 
@@ -47,14 +55,14 @@ class CriarCadastro(LoginRequiredMixin, CreateView):
     model = Familias
     template_name = 'cadastro_form.html'
     form_class = CadastroForm
-    success_url = reverse_lazy('inicio')
+    # success_url = reverse_lazy('inicio')
 
 
 class AtualizarCadastro(UpdateView):
     model = Familias
     template_name = 'cadastro_form.html'
     form_class = CadastroForm
-    #success_url = reverse_lazy('core:inicio')
+    # success_url = reverse_lazy('core:inicio')
 
 class DeletarCadastro(DeleteView):
     model = Familias

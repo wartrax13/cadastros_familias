@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block content %}
 <div class="page-header">
     <h2>Lista de Famílias
@@ -27,7 +26,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for object in object_list %}
+          {% for object in page_obj %}
         <tr>
             <td>
                 {% if object.cadastrado %}
@@ -48,7 +47,9 @@
             <td class="text-center">{{ object.atualizado_em }}</td>
 
         </tr>
-        {% endfor %}
+        {{ contact.full_name|upper }}<br>
+    {% endfor %}
+
         </tbody>
     </table>
     {% else %}
@@ -56,6 +57,24 @@
     Sem itens na lista.
     </p>
     {% endif %}
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; Primeiro</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Próximo</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Último &raquo;</a>
+        {% endif %}
+    </span>
 </div>
 
 {% endblock content %}
