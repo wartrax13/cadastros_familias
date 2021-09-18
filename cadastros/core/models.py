@@ -1,10 +1,12 @@
 from django.db import models
 from django.urls.base import reverse
+from django.urls import reverse_lazy
 
 # Create your models here.
 
 class Familias(models.Model):
     id = models.AutoField(primary_key=True)
+    cadastrado = models.BooleanField(default=False)
     nome = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, unique=True)
     rua = models.CharField(max_length=200, db_index=True)
@@ -23,5 +25,5 @@ class Familias(models.Model):
         return self.nome
 
     def get_absolute_url(self):
-        return reverse("core:familias_lista", args=[self.slug])
+        return reverse_lazy('core:cadastro_detalhe', kwargs={'pk': self.pk})
     
