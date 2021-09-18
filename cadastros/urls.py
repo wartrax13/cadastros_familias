@@ -22,6 +22,8 @@ from cadastros.core.views import cadastro_lista, cadastro_detalhe
 
 urlpatterns = [
     path('', include('cadastros.core.urls')),
+    path('contato/', include('cadastros.core.urls')),
+    path('sobre/', include('cadastros.core.urls')),
     path('cadastro_lista/', include('cadastros.core.urls')),
     path('cadastro_detalhe/', include('cadastros.core.urls')),
     path('editar_cadastro/', include('cadastros.core.urls')),

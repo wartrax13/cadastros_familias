@@ -13,6 +13,12 @@ from django.views.generic import TemplateView, ListView, UpdateView, DetailView
 def inicio(request):
     return render(request, 'index.html')
 
+def contato(request):
+    return render(request, 'contato.html')
+
+def sobre(request):
+    return render(request, 'sobre.html')
+
 @login_required
 def cadastro_lista(request):
     template_name = 'lista.html'
