@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'widget_tweaks',
     'bootstrapform',
+    'django_object_actions',
     # Apps internas
     'cadastros.core',
 ]
