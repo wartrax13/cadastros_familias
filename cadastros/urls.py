@@ -13,13 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 
-import cadastros.core.views
+from cadastros.core.views import cadastro_lista, cadastro_detalhe
 
 urlpatterns = [
+    path('', include('cadastros.core.urls')),
+    path('cadastro_lista/', include('cadastros.core.urls')),
+    path('cadastro_detalhe/', include('cadastros.core.urls')),
+    path('editar_cadastro/', include('cadastros.core.urls')),
+    path('cadastros/', include('cadastros.core.urls')),
     path('admin/', admin.site.urls),
-    path('cadastro/',cadastros.core.views.home),
-    path('', include('cadastros.core.urls', namespace='core'))
 ]

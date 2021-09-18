@@ -1,10 +1,12 @@
 from django.urls import path
-from . import views
+from cadastros.core import views
 
-app_name = 'cadastros.core'
+app_name = 'core'
 
 urlpatterns = [
-    path('', views.familias_lista, name='familia_lista'),
-    path('<slug:category_slug>/', views.familias_lista, name='familias_por_data')
-
+    path('', views.inicio, name='inicio'),
+    path('cadastros/', views.cadastro_lista, name='cadastro_lista'),
+    path('<int:pk>/', views.cadastro_detalhe, name='cadastro_detalhe'),
+    path('add/', views.CriarCadastro.as_view(), name='cadastro_add'),
+    path('<int:pk>/edit/', views.AtualizarCadastro.as_view(), name='editar_cadastro'),
 ]

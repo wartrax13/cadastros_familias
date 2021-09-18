@@ -41,6 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Apps externas
+    'django_extensions',
+    'widget_tweaks',
+    'bootstrapform',
+    # Apps internas
     'cadastros.core',
 ]
 
