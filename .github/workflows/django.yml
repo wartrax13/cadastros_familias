@@ -6,20 +6,14 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  job_with_secret:
-    steps:
-    - run: example-cli
-      env:
-        SECRET_CONF: ${{ secrets.SECRET_KEY }}
   build:
-    
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
       matrix:
         python-version: [3.7, 3.8, 3.9]
-     
     steps:
+    - run: SECRET_CONF="${{ secrets.SECRET_KEY }}" example-cli
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
